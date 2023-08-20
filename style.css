@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+:root {
+    --color-bordes: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Concert One', cursive;
+}
+
+body {
+    background-color: rgb(106, 0, 206);
+    /* box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-container {
+    padding: 30px 60px 45px 60px;
+    box-shadow: 1px 2px 8px rgb(40, 7, 41);
+    border-radius: 5%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 33% 33% 33%;
+}
+
+#title {
+    text-align: center;
+    color: rgb(236, 236, 236);
+    font-size: 50px;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
+}
+
+button {
+    min-height: 80px;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    padding: 1px;
+    margin: 0;
+    border: none;
+}
+
+.x::after {
+    content: "x";
+    color: white;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -62%) scale(1);
+    font-size: 100px;
+    animation: animacion-aparicion 0.7s;
+}
+
+@keyframes animacion-aparicion {
+    0% {
+        transform: translate(-50%, -53%) scale(0);
+    }
+
+
+    50% {
+        transform: translate(-50%, -65%) scale(1.2);
+    }
+
+    100% {
+        transform: translate(-50%, -62%) scale(1);
+    }
+}
+
+.o::after {
+    content: "o";
+    color: white;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -62%);
+    font-size: 100px;
+    animation: animacion-aparicion 0.7s;
+}
+
+
+
+.uno {
+    border-right: 3px solid var(--color-bordes);
+    border-bottom: 3px solid var(--color-bordes);
+}
+
+.dos {
+    border-bottom: 3px solid var(--color-bordes);
+}
+
+.tres {
+    border-left: 3px solid var(--color-bordes);
+    border-bottom: 3px solid var(--color-bordes);
+}
+
+.cuatro {
+    border-right: 3px solid var(--color-bordes);
+    border-bottom: 3px solid var(--color-bordes);
+}
+
+.cinco {
+    border-bottom: 3px solid var(--color-bordes);
+}
+
+.seis {
+    border-left: 3px solid var(--color-bordes);
+    border-bottom: 3px solid var(--color-bordes);
+}
+
+.siete {
+    border-right: 3px solid var(--color-bordes);
+}
+
+.nueve {
+    border-left: 3px solid var(--color-bordes);
+}
