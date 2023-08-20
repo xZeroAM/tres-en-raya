@@ -56,13 +56,14 @@ function agregarXO(espacio) {
 function agregarJugada(espacio) {
     // Llama a la funcion que se encarga de poner las clases "x" y "o" para la vista
     agregarXO(espacio);
-    num_jugadas++; // agrega 1 al numero de jugadas
     // Verifica cual turno es, "x" o "o", y revisa que la jugada sea valida (no se haya hecho antes) para agregarla
     if (espacio.classList[1] == "x" && !(jugadas_x.includes(parseInt(espacio.id)))) {
         jugadas_x.push(parseInt(espacio.id));
+        num_jugadas++; // agrega 1 al numero de jugadas
         console.log(jugadas_x);
     } else if (espacio.classList[1] == "o" && !(jugadas_o.includes(parseInt(espacio.id)))) {
         jugadas_o.push(parseInt(espacio.id));
+        num_jugadas++; // agrega 1 al numero de jugadas
         console.log(jugadas_o);
     }
 }
@@ -85,7 +86,7 @@ function verificarGanador() {
             console.log("Gano O");
             pantalla_texto.innerHTML = "<h1>Gano \"O\"</h1>"
             pantalla_container.classList.add("activo");
-        } else if(num_jugadas == 9) {
+        } else if (num_jugadas == 9) {
             console.log("Empate")
             pantalla_texto.innerHTML = "<h1>Empate</h1>"
             pantalla_container.classList.add("activo");
