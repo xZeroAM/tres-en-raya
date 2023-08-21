@@ -7,6 +7,14 @@ var btn_ok = document.getElementById("pantalla-btn");
 var pantalla_texto = document.getElementById("pantalla-texto")
 var num_jugadas = 0; // Contador de los turnos, al llegar a nueve sirve para marcar el empate
 
+// Recursos
+var sonido_click = new Audio("recursos/sound_pop.mp3");
+var sonido_click2 = sonido_click.cloneNode();
+var sonido_victoria = new Audio("recursos/sound_victoria_hw.mp3");
+var sonido_victoria = sonido_victoria.cloneNode();
+sonido_click.volume = 0.5;
+sonido_victoria.volume = 0.3;
+
 // Matriz con todas las combinaciones ganadoras
 var combinaciones_ganadoras =
     [
@@ -59,10 +67,14 @@ function agregarJugada(espacio) {
     // Verifica cual turno es, "x" o "o", y revisa que la jugada sea valida (no se haya hecho antes) para agregarla
     if (espacio.classList[1] == "x" && !(jugadas_x.includes(parseInt(espacio.id)))) {
         jugadas_x.push(parseInt(espacio.id));
+        sonido_click.currentTime = 0;
+        sonido_click.play();
         num_jugadas++; // agrega 1 al numero de jugadas
         console.log(jugadas_x);
     } else if (espacio.classList[1] == "o" && !(jugadas_o.includes(parseInt(espacio.id)))) {
         jugadas_o.push(parseInt(espacio.id));
+        sonido_click.currentTime = 0;
+        sonido_click.play();
         num_jugadas++; // agrega 1 al numero de jugadas
         console.log(jugadas_o);
     }
@@ -70,7 +82,6 @@ function agregarJugada(espacio) {
 
 // Funcion para verficar el ganador 
 function verificarGanador() {
-
     // Itereamos todas las combinaciones y en caso de que el vector con las jugadas "x" o "o"
     // contenga una combinacion ganadora, las variables ganador_x o ganador_o toman un valor false o true
     for (var i = 0; i < combinaciones_ganadoras.length; i++) {
@@ -80,14 +91,20 @@ function verificarGanador() {
         // En caso "ganador_x" sea true, se de muestra como ganador en la pantalla y lo mismo con "ganador_y"
         if (ganador_x) {
             console.log("Gano X");
+            sonido_victoria.currentTime = 0;
+            sonido_victoria.play();
             pantalla_texto.innerHTML = "<h1>Gano \"X\"</h1>"
             pantalla_container.classList.add("activo");
         } else if (ganador_o) {
             console.log("Gano O");
+            sonido_victoria.currentTime = 0;
+            sonido_victoria.play();
             pantalla_texto.innerHTML = "<h1>Gano \"O\"</h1>"
             pantalla_container.classList.add("activo");
         } else if (num_jugadas == 9) {
             console.log("Empate")
+            sonido_victoria.currentTime = 0;
+            sonido_victoria.play();
             pantalla_texto.innerHTML = "<h1>Empate</h1>"
             pantalla_container.classList.add("activo");
         }
